@@ -46,8 +46,8 @@ if [ ! "$(command -v rustc)" ]
           tmux has-session -t gpu01
           if [ $? != 0 ]
 	      then
-            read -p "请输入account_name > " account_name
-            echo "启动miner"
+		    read -p "请输入account_name > " account_name
+		    echo "启动miner"
 		    tmux new-session -s gpu01 -d
 		    tmux new-session -s gpu02 -d
 		    tmux new-session -s gpu03 -d
@@ -65,9 +65,9 @@ if [ ! "$(command -v rustc)" ]
 		    tmux send-keys -t gpu04 'export CUDA_VISIBLE_DEVICES=3 && /root/miner/aleo-pool-prover_ubuntu1804_gpu-20221123 --pool 128.14.72.188:30009 --account_name $account_name --miner_name gpu04 > aleo3.log 2>&1' C-m
 		    sleep 5
 		    tmux send-keys -t gpu05 'export CUDA_VISIBLE_DEVICES=4 && /root/miner/aleo-pool-prover_ubuntu1804_gpu-20221123 --pool 128.14.72.188:30009 --account_name $account_name --miner_name gpu05 > aleo4.log 2>&1' C-m
-		    sleep 5
+	            sleep 5
 		    tmux send-keys -t gpu06 'export CUDA_VISIBLE_DEVICES=5 && /root/miner/aleo-pool-prover_ubuntu1804_gpu-20221123 --pool 128.14.72.188:30009 --account_name $account_name --miner_name gpu06 > aleo5.log 2>&1' C-m
               else
-                     echo "tmux 运行中：${Name}"
+                    echo "tmux 运行中：${Name}"
           fi
 fi
