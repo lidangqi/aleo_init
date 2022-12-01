@@ -37,6 +37,7 @@ echo "修改可执行权限"
 echo "设置矿机编号"
 
 read -p "请输入account_name > " account_name
+read -p "请输入account_name > " account_name
 
 if [ ! "$(command -v rustc)" ]
     then
