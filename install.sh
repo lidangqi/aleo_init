@@ -4,7 +4,9 @@ echo "安装必要的工具"
     sudo apt update -y
     sudo apt install curl -y
     sudo apt install git -y
-    sudo apt install tmux htop nvtop -y
+    sudo apt install tmux -y
+    sudo apt install htop -y
+    sudo apt install nvtop -y
 
 echo "开始安装rust"
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh  -s -- -y
