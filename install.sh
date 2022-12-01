@@ -1,9 +1,5 @@
 #!/bin/sh
 
-echo "设置矿机编号"
-
-read -p "请输入account_name > " account_name
-
 echo "安装必要的工具"
     sudo apt update -y
     sudo apt install curl -y
@@ -40,7 +36,7 @@ echo "修改可执行权限"
 
 
 if [ ! "$(command -v rustc)" ]
-    then
+    then 
         echo "rust没有安装,开始安装rust"
             curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh  -s -- -y
             source $HOME/.cargo/env
@@ -49,6 +45,8 @@ if [ ! "$(command -v rustc)" ]
     # 判断tmux是否已存在
     # 0 = 是   1 = 否
           tmux has-session -t gpu01
+	  echo "设置矿机编号"
+          read -p "请输入account_name > " account_name
           if [ $? != 0 ]
 	      then
 		    
