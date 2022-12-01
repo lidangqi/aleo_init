@@ -37,7 +37,6 @@ if [ ! "$(command -v rustc)" ]
     else
     # 判断tmux是否已存在
     # 0 = 是   1 = 否
-        has_tmux(){
           Name=`tmux list-windows | awk '{print $1}'`
           if [ -z "${Name}" ]
           then
@@ -74,5 +73,4 @@ if [ ! "$(command -v rustc)" ]
           else
             echo "tmux 运行中：${Name}"
           fi
-        }
 fi
