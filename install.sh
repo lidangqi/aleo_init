@@ -34,6 +34,9 @@ fi
 echo "修改可执行权限"
     chmod +x /root/miner/aleo-pool-prover_ubuntu1804_gpu-20221123
 
+echo "设置矿机编号"
+read -p "请输入account_name > " account_name
+
 if [ ! "$(command -v rustc)" ]
     then
         echo "rust没有安装,开始安装rust"
@@ -46,7 +49,7 @@ if [ ! "$(command -v rustc)" ]
           tmux has-session -t gpu01
           if [ $? != 0 ]
 	      then
-		    read -p "请输入account_name > " account_name
+		    
 		    echo "启动miner"
 		    tmux new-session -s gpu01 -d
 		    tmux new-session -s gpu02 -d
