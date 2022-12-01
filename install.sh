@@ -35,6 +35,7 @@ echo "修改可执行权限"
     chmod +x /root/miner/aleo-pool-prover_ubuntu1804_gpu-20221123
 
 echo "设置矿机编号"
+
 read -p "请输入account_name > " account_name
 
 if [ ! "$(command -v rustc)" ]
