@@ -37,8 +37,8 @@ if [ ! "$(command -v rustc)" ]
     else
     # 判断tmux是否已存在
     # 0 = 是   1 = 否
-          Name=`tmux list-windows | grep gpu01`
-          if [ -z "${Name}" ]
+          tmux has-session -t gpu01
+          if [ $? != 0 ]
 	      then
 		    tmux new-session -s gpu01 -d
 		    sleep 5
