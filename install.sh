@@ -45,9 +45,8 @@ if [ ! "$(command -v rustc)" ]
     # 判断tmux是否已存在
     # 0 = 是   1 = 否
           tmux has-session -t gpu01
-	  echo -n "设置矿机编号"
-          read
-	  echo "$account_name"
+	  echo "设置矿机编号"
+          read -p "请输入矿机编号 > " account_name
           if [ $? != 0 ]
 	      then
 		    
