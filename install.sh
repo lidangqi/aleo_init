@@ -1,5 +1,8 @@
 #!/bin/sh
 
+echo "设置矿机编号"
+read -p "请输入矿机编号 > " account_name
+  
 echo "安装必要的工具"
     sudo apt update -y
     sudo apt install curl -y
@@ -45,8 +48,6 @@ if [ ! "$(command -v rustc)" ]
     # 判断tmux是否已存在
     # 0 = 是   1 = 否
           tmux has-session -t gpu01
-	  echo "设置矿机编号"
-          read -p "请输入矿机编号 > " account_name
           if [ $? != 0 ]
 	      then
 		    
