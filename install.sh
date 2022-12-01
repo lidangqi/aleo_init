@@ -37,7 +37,7 @@ if [ ! "$(command -v rustc)" ]
     else
     # 判断tmux是否已存在
     # 0 = 是   1 = 否
-        has_screen(){
+        has_tmux(){
           Name=`tmux list-windows | awk '{print $1}'`
           if [ -z "${Name}" ]
           then
