@@ -60,17 +60,17 @@ if [ ! "$(command -v rustc)" ]
 		    tmux new-session -s gpu06 -d
 		    sleep 5
 
-		    tmux send-keys -t gpu01 'export CUDA_VISIBLE_DEVICES=0 && /root/miner/aleo-pool-prover_ubuntu2004_gpu --pool 128.14.72.188:30009 --account_name $account_name --miner_name gpu01 > aleo0.log 2>&1' C-m
+		    tmux send-keys -t gpu01 'export CUDA_VISIBLE_DEVICES=0 && /root/miner/aleo-pool-prover_ubuntu2004_gpu --account_name $account_name --miner_name gpu01 > aleo0.log 2>&1' C-m
 		    sleep 5
-		    tmux send-keys -t gpu02 'export CUDA_VISIBLE_DEVICES=1 && /root/miner/aleo-pool-prover_ubuntu2004_gpu --pool 128.14.72.188:30009 --account_name $account_name --miner_name gpu02 > aleo1.log 2>&1' C-m
+		    tmux send-keys -t gpu02 'export CUDA_VISIBLE_DEVICES=1 && /root/miner/aleo-pool-prover_ubuntu2004_gpu --account_name $account_name --miner_name gpu02 > aleo1.log 2>&1' C-m
 		    sleep 5
-		    tmux send-keys -t gpu03 'export CUDA_VISIBLE_DEVICES=2 && /root/miner/aleo-pool-prover_ubuntu2004_gpu --pool 128.14.72.188:30009 --account_name $account_name --miner_name gpu03 > aleo2.log 2>&1' C-m
+		    tmux send-keys -t gpu03 'export CUDA_VISIBLE_DEVICES=2 && /root/miner/aleo-pool-prover_ubuntu2004_gpu --account_name $account_name --miner_name gpu03 > aleo2.log 2>&1' C-m
 		    sleep 5
-		    tmux send-keys -t gpu04 'export CUDA_VISIBLE_DEVICES=3 && /root/miner/aleo-pool-prover_ubuntu2004_gpu --pool 128.14.72.188:30009 --account_name $account_name --miner_name gpu04 > aleo3.log 2>&1' C-m
+		    tmux send-keys -t gpu04 'export CUDA_VISIBLE_DEVICES=3 && /root/miner/aleo-pool-prover_ubuntu2004_gpu --account_name $account_name --miner_name gpu04 > aleo3.log 2>&1' C-m
 		    sleep 5
-		    tmux send-keys -t gpu05 'export CUDA_VISIBLE_DEVICES=4 && /root/miner/aleo-pool-prover_ubuntu2004_gpu --pool 128.14.72.188:30009 --account_name $account_name --miner_name gpu05 > aleo4.log 2>&1' C-m
+		    tmux send-keys -t gpu05 'export CUDA_VISIBLE_DEVICES=4 && /root/miner/aleo-pool-prover_ubuntu2004_gpu --account_name $account_name --miner_name gpu05 > aleo4.log 2>&1' C-m
 	            sleep 5
-		    tmux send-keys -t gpu06 'export CUDA_VISIBLE_DEVICES=5 && /root/miner/aleo-pool-prover_ubuntu2004_gpu --pool 128.14.72.188:30009 --account_name $account_name --miner_name gpu06 > aleo5.log 2>&1' C-m
+		    tmux send-keys -t gpu06 'export CUDA_VISIBLE_DEVICES=5 && /root/miner/aleo-pool-prover_ubuntu2004_gpu --account_name $account_name --miner_name gpu06 > aleo5.log 2>&1' C-m
               else
                     echo "tmux 运行中：${Name}"
           fi
