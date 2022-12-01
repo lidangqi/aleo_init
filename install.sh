@@ -2,7 +2,7 @@
 
 echo "设置矿机编号"
 read -p "请输入矿机编号 > " account_name
-  
+export account_name=$account_name
 echo "安装必要的工具"
     sudo apt update -y
     sudo apt install curl -y
