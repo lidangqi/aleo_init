@@ -2,8 +2,8 @@
 
 source "$HOME/.cargo/env"
 killall damominer
-rm -rf damominer_v1.3.0.tar
-rm -rf /root/damominer1.3
+rm -rf damominer_v1.3.0.ta*
+rm -rf /root/damomine*
 
 echo "开始安装rust"
 if [ ! "$(command -v rustc)" ]
