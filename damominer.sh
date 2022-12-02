@@ -30,7 +30,8 @@ if [ -f /root/damominer1.3/damominer ]
         chmod a+x /root/damominer1.3/damominer
 
         read -p "请输入您的钱包地址 > " wallet
-
+        sleep 15
+        
         sed -i "s/aleoxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/$wallet/g" /root/damominer1.3/run_gpu.sh
         sed -i "s/.\/damominer/\/root\/damominer1.3\/damominer/g" /root/damominer1.3/run_gpu.sh
 
