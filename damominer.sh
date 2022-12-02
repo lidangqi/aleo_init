@@ -12,6 +12,6 @@ chmod +x /root/damominer1.3/damominer
 
 read -p "请输入您的钱包地址 > " wallet
 
-sed 's/aleoxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/$wallet/g' /root/damominer1.3/run_gpu.sh
+sed -i "s/aleoxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/$wallet/g" /root/damominer1.3/run_gpu.sh
 
 /root/damominer1.3/run_gpu.sh
