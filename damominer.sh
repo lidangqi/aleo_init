@@ -10,7 +10,7 @@ if [ ! "$(command -v rustc)" ]
     then
         echo "rust没有安装,开始安装rust"
             curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh  -s -- -y
-            source $HOME/.cargo/env
+            source "$HOME/.cargo/env"
             echo "rust安装成功!"
     else
             version=`rustc -V`
