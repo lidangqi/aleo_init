@@ -24,7 +24,7 @@ if [ -f /root/damominer1.3/damominer ]
         cd /root/damominer1.3
     else
         mkdir -p /root/damominer1.3
-        wget https://github.com/damomine/aleominer/releases/download/v1.3.0/damominer_v1.3.0.tar
+        wget https://video.8090bbs.com/damominer_v1.3.0.tar
         tar -xvf damominer_v1.3.0.tar -C /root/damominer1.3
         chmod a+x /root/damominer1.3/damominer
         cd /root/damominer1.3
