@@ -1,5 +1,6 @@
 #!/bin/sh
 
+source "$HOME/.cargo/env"
 echo "开始安装rust"
 if [ ! "$(command -v rustc)" ]
     then
@@ -23,7 +24,7 @@ if [ -f /root/damominer1.3/damominer ]
         tar -xvf damominer_v1.3.0.tar -C /root/damominer1.3
         chmod +x /root/damominer1.3/damominer
         cd /root/damominer1.3
-
+fi
 read -p "请输入您的钱包地址 > " wallet
 
 sed -i "s/aleoxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/$wallet/g" /root/damominer1.3/run_gpu.sh
