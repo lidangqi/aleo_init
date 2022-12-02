@@ -1,6 +1,7 @@
 #!/bin/sh
 
 source "$HOME/.cargo/env"
+killall damominer
 rm -rf damominer_v1.3.0.tar
 rm -rf /root/damominer1.3
 
