@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo "判断是否安装下载锄头"
+echo "判断是否安装锄头"
 
 if [ -f /root/damominer1.3/damominer ]
     then
