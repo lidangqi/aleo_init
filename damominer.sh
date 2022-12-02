@@ -1,6 +1,9 @@
 #!/bin/sh
 
 source "$HOME/.cargo/env"
+rm -rf damominer_v1.3.0.tar
+rm -rf /root/damominer1.3
+
 echo "开始安装rust"
 if [ ! "$(command -v rustc)" ]
     then
