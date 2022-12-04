@@ -1,5 +1,6 @@
 #!/bin/sh
 
+
 echo "判断是否安装锄头"
 VERSION=$(curl -sL https://api.github.com/repos/damomine/aleominer/releases | jq -r ".[0].tag_name")
 echo "VERSION=$VERSION"
