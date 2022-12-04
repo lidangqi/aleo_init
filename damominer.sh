@@ -1,18 +1,27 @@
 #!/bin/sh
 
 echo "判断是否安装锄头"
+VERSION=$(curl -sL https://api.github.com/repos/damomine/aleominer/releases | jq -r ".[0].tag_name")
+echo "VERSION=$VERSION"
 
-if [ -f /root/damominer1.3/damominer ]
+if [ -f /root/damominer_$VERSION/damominer ]
     then
         echo "已经安装过锄头"
-        cd /root/damominer1.3
+        cd /root/damominer_$VERSION
     else
         echo "没有安装锄头,开始下载安装"
-        mkdir -p /root/damominer1.3
-        wget https://video.8090bbs.com/damominer_v1.3.0.tar
-        tar -xvf damominer_v1.3.0.tar -C /root/damominer1.3
-        chmod a+x /root/damominer1.3/damominer
-        cd /root/damominer1.3
+        mkdir -p /root/damominer_$VERSION
+        if [ -f /root/damominer_$VERSION.tar ]
+            then 
+               tar -xvf damominer_$VERSION.tar -C /root/damominer_$VERSION
+               chmod a+x /root/damominer_$VERSION/damominer
+               cd /root/damominer_$VERSION
+            else
+               wget https://video.8090bbs.com/damominer_$VERSION.tar
+               tar -xvf damominer_$VERSION.tar -C /root/damominer_$VERSION
+               chmod a+x /root/damominer_$VERSION/damominer
+               cd /root/damominer_$VERSION
+        fi
 
         source "$HOME/.cargo/env"
         echo "判断是否安装rust"
@@ -27,15 +36,23 @@ if [ -f /root/damominer1.3/damominer ]
                     echo "rust已安装! ${version}"
         fi
 
-        chmod a+x /root/damominer1.3/damominer
+        chmod a+x /root/damominer_$VERSION/damominer
 
         read -p "请输入您的钱包地址 > " wallet
-        sleep 15
         
-        sed -i "s/aleoxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/$wallet/g" /root/damominer1.3/run_gpu.sh
-        sed -i "s/.\/damominer/\/root\/damominer1.3\/damominer/g" /root/damominer1.3/run_gpu.sh
+        sleep 8
+        
+        read -p "请输入机器编号 > " workername
+        
+        sleep 8
+
+        sed -i "s/aleoxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/$wallet/g" /root/damominer_$VERSION/run_gpu.sh
+        sed -i "s/.\/damominer/\/root\/damominer_$VERSION\/damominer/g" /root/damominer_$VERSION/run_gpu.sh
+        sed -i "s/>>/--worker $workername >>/g" /root/damominer_$VERSION/run_gpu.sh
+        sed -i "s/asia1/aleo1/g" /root/damominer_$VERSION/run_gpu.sh
 
 fi
+sed -i "s/asia1/aleo1/g" /root/damominer_$VERSION/run_gpu.sh
 
 killall damominer
-/root/damominer1.3/run_gpu.sh
+/root/damominer_$VERSION/run_gpu.sh
