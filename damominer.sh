@@ -17,7 +17,7 @@ if [ -f /root/damominer_$VERSION/damominer ]
                chmod a+x /root/damominer_$VERSION/damominer
                cd /root/damominer_$VERSION
             else
-               wget https://video.8090bbs.com/damominer_$VERSION.tar
+               wget https://github.com/damomine/aleominer/releases/download/$VERSION/damominer_$VERSION.tar
                tar -xvf damominer_$VERSION.tar -C /root/damominer_$VERSION
                chmod a+x /root/damominer_$VERSION/damominer
                cd /root/damominer_$VERSION
