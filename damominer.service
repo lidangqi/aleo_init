@@ -1,0 +1,12 @@
+[Unit]
+Description=damominer
+Documentation=https://github.com/lidangqi/hz/new/master
+After=network.target
+
+[Service]
+Restart=on-failure
+WorkingDirectory=/root/damominer_v1.4.0/
+ExecStart=/root/damominer_v1.4.0/run_gpu.sh
+ExecStop=killall damominer
+[Install]
+WantedBy=multi-user.target
