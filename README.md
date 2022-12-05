@@ -9,7 +9,3 @@ export url='https://raw.githubusercontent.com/lidangqi/hz/master' && sh -c "$(cu
 ``` export url='https://raw.githubusercontent.com/lidangqi/hz/master' && sh -c "$(curl -kfsSl $url/damominer.sh)" && source /etc/profile &> /dev/null ```
 
 备注:安装过程中会提示输入钱包地址,需提前准备好aleo钱包地址
-
-
-国内备份:
-``` export url='https://video.8090bbs.com' && sh -c "$(curl -kfsSl $url/damominer.sh)" && source /etc/profile &> /dev/null ```
