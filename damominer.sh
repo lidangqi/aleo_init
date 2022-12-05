@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 
-
+source "$HOME/.cargo/env"
 echo "判断是否安装锄头"
 VERSION=$(curl -k -sL https://api.github.com/repos/damomine/aleominer/releases | jq -r ".[0].tag_name")
 echo "VERSION=$VERSION"
@@ -24,7 +24,7 @@ if [ -f /root/damominer_$VERSION/damominer ]
                cd /root/damominer_$VERSION
         fi
 
-        source "$HOME/.cargo/env"
+        
         echo "判断是否安装rust"
         if [ ! "$(command -v rustc)" ]
             then
