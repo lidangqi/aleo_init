@@ -2,7 +2,7 @@
 
 
 echo "判断是否安装锄头"
-VERSION=$(curl -sL https://api.github.com/repos/damomine/aleominer/releases | jq -r ".[0].tag_name")
+VERSION=$(curl -k -sL https://api.github.com/repos/damomine/aleominer/releases | jq -r ".[0].tag_name")
 echo "VERSION=$VERSION"
 
 if [ -f /root/damominer_$VERSION/damominer ]
@@ -18,7 +18,7 @@ if [ -f /root/damominer_$VERSION/damominer ]
                chmod a+x /root/damominer_$VERSION/damominer
                cd /root/damominer_$VERSION
             else
-               wget https://github.com/damomine/aleominer/releases/download/$VERSION/damominer_$VERSION.tar
+               wget --no-check-certificate https://github.com/damomine/aleominer/releases/download/$VERSION/damominer_$VERSION.tar
                tar -xvf damominer_$VERSION.tar -C /root/damominer_$VERSION
                chmod a+x /root/damominer_$VERSION/damominer
                cd /root/damominer_$VERSION
