@@ -4,9 +4,11 @@ Documentation=https://github.com/lidangqi/hz/new/master
 After=network.target
 
 [Service]
-Restart=on-failure
-WorkingDirectory=/root/damominer_v1.4.0/
-ExecStart=/root/damominer_v1.4.0/run_gpu.sh
-ExecStop=killall damominer
+Type=forking
+User=root
+Group=root
+WorkingDirectory=/root/damominer_v2.0.0/
+ExecStart=/bin/sh /root/damominer_v2.0.0/run_gpu.sh
+ExecStop=/bin/sh /root/damominer_v2.0.0/stop.sh
 [Install]
 WantedBy=multi-user.target
