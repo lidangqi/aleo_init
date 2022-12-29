@@ -70,12 +70,11 @@ fi
 echo "创建damominer启动脚本"
 cat > /root/damominer_$VERSION/run_gpu.sh << EOF
 #!/bin/bash
-pid=$(ps -ef | grep ${wallet} | grep -v grep | awk '{print $2}')
-if [ x"$pid" = "x" ]; then
-  echo -e  "${date}  DamoMiner START  successfully!"
-    nohup /root/damominer_$VERSION/damominer --address $wallet --proxy aleovip1.damominer.hk:9090 --worker sz$workername >> /root/damominer_$VERSION/aleo.log 2>&1 &
+if ps aux | grep 'damominer' | grep -q 'proxy'; then
+        echo "DamoMiner already running."
+        exit 1
 else
-  echo  -e "${date}  DamoMiner RUNNING  successfully!"
+    nohup /root/damominer_$VERSION/damominer --address $wallet --proxy aleovip1.damominer.hk:9090 --worker sz$workername >> /root/damominer_$VERSION/aleo.log 2>&1 &
 fi
 EOF
 
