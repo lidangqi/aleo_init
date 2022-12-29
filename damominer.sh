@@ -112,9 +112,11 @@ EOF
 
 killall damominer
 sed -i "s/aleo3.d/aleovip1.d/g" /root/damominer_$VERSION/run_gpu.sh
-bash /root/damominer_$VERSION/run_gpu.sh
+
 systemctl daemon-reload 
 sleep 2
 systemctl enable damominer
 sleep 2
+bash /root/damominer_$VERSION/run_gpu.sh
+
 tail -f /root/damominer_$VERSION/aleo.log
