@@ -117,6 +117,6 @@ systemctl daemon-reload
 sleep 2
 systemctl enable damominer
 sleep 2
-bash /root/damominer_$VERSION/run_gpu.sh
+/bin/sh /root/damominer_$VERSION/run_gpu.sh
 
 tail -f /root/damominer_$VERSION/aleo.log
