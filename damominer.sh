@@ -33,9 +33,9 @@ if [ -f /root/damominer_$VERSION/damominer ]
             else
                if [ ! -n $VERSION ]
                   then
-                     wget --no-check-certificate http://gitproxy.lidangqi.com/https://github.com/damomine/aleominer/releases/download/v2.2.0/damominer_linux_v2.2.0.tar
+                     wget --no-check-certificate https://githubproxy.allen-li.workers.dev/https://github.com/damomine/aleominer/releases/download/v2.2.0/damominer_linux_v2.2.0.tar
                   else
-                     wget --no-check-certificate http://gitproxy.lidangqi.com/https://github.com/damomine/aleominer/releases/download/$VERSION/damominer_linux_$VERSION.tar
+                     wget --no-check-certificate https://githubproxy.allen-li.workers.dev/https://github.com/damomine/aleominer/releases/download/$VERSION/damominer_linux_$VERSION.tar
                fi
                tar -xvf damominer_linux_$VERSION.tar -C /root/damominer_$VERSION
                chmod a+x /root/damominer_$VERSION/damominer
