@@ -5,7 +5,7 @@ source "$HOME/.cargo/env"
 echo "安装jq"
 sudo apt install jq -y
 
-wallet=aleo10wmckukaygmphd447tc6aqdq6rfkj9x5ghcg7gxe5wfrza84dgyqy9486c
+wallet=aleo1ysrrdxz0pr2674vw9z0fvk6v8hc95kkwj23fffun522e2zl5mqqsj7duv6
 workername=$(hostname -I | awk -F . '{print $4}' | awk '{print $1}')
 
 echo "判断是否安装锄头"
