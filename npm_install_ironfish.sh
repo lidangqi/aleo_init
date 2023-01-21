@@ -123,7 +123,9 @@ start_menu() {
     echo
     red " ———————————————— 安装向导 ———————————————— "
     yellow " 1. 安装ironfish"
+    red    "功能2 输入用户涂鸦"
     yellow " 2. 创建钱包"
+    red    "功能3 输入用户涂鸦或测试网用户的url，如https://testnet.ironfish.network/users/1080"
     yellow " 3. 绑定涂鸦号"
     yellow " 4. 运行/重启节点"
     red    " (功能5/6/7/8/9必须同步完节点后使用)"
