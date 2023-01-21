@@ -189,7 +189,7 @@ ironfish_faucet(){
 }
 
 #8 功能补充区
-main(){
+start_menu() {
     
     clear
 
@@ -252,5 +252,5 @@ main(){
 
     done
 }
-
-main
+check_ubuntu
+start_menu
