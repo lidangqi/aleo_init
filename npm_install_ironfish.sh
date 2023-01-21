@@ -60,8 +60,8 @@ run_ironfish() {
     PROC_NAME=ironfish
     ProcNumber=$(ps -ef | grep -w $PROC_NAME | grep -v grep | wc -l)
     if [ $ProcNumber -le 0 ];then
-    echo "ironfish is not run"
-    nohup ironfish start >> /root/ironfish_node.log 2>&1 &   
+        echo "ironfish is not run"
+        nohup ironfish start >> /root/ironfish_node.log 2>&1 &   
     else
         echo "ironfish already running."
     fi
