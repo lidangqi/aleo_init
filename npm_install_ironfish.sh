@@ -138,7 +138,7 @@ start_menu() {
         run_wallet_mint
         ;;
     6)
-        run_wallet_mint
+        run_wallet_burn
         ;;
     7)
         run_wallet_send
