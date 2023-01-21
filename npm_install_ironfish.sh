@@ -125,7 +125,7 @@ start_menu() {
     yellow " 1. 安装ironfish"
     yellow " 2. 创建钱包"
     yellow " 3. 绑定涂鸦号"
-    yellow " 4. 运行节点"
+    yellow " 4. 运行/重启节点"
     yellow " 5. 任务一:铸币"
     yellow " 6. 任务二:燃烧铸币"
     yellow " 7. 任务三:发送铸币"
