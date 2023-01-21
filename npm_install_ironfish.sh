@@ -90,6 +90,7 @@ run_faucet() {
 
 run_wallet_balances() {
     ironfish wallet:balances
+    ironfish wallet:notes
 }
 
 run_wallet_transactions() {
@@ -119,7 +120,7 @@ start_menu() {
     yellow " 10. 水龙头"
     yellow " 0. 退出 管理脚本"
     green " ========================================== "
-    read -rp "Please enter a number:" num
+    read -rp "Please enter a number:  " num
     case "$num" in
     1)
         install_ironfish_env
