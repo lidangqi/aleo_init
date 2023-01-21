@@ -197,16 +197,18 @@ main(){
     green "           ironfish 一键安装管理脚本"
     green "    原作者署名: yangyangcoin 修改: Allen_Li"
     green " ==========================================="
-    yellow "1. 安装 docker 和 Ironfish"
-    yellow "2. 检查 node状态"
-    yellow "3. 开始 miner挖矿"
-    yellow "4. 查看 Wallet信息"
-    yellow "5. 操作 Asset 铸造，燃烧，发送"
-    yellow "6. 进入 Ironfish控制台"
-    yellow "7. 重启节点"
-    yellow "8. 版本更新"
-    yellow "9. 水龙头"
-    yellow "0. 退出"
+    echo
+    yellow " 1. 安装 docker 和 Ironfish"
+    yellow " 2. 检查 node状态"
+    yellow " 3. 开始 miner挖矿"
+    yellow " 4. 查看 Wallet信息"
+    yellow " 5. 操作 Asset 铸造，燃烧，发送"
+    yellow " 6. 进入 Ironfish控制台"
+    yellow " 7. 重启节点"
+    yellow " 8. 版本更新"
+    yellow " 9. 水龙头"
+    yellow " 0. 退出"
+    echo
     read -r -p " 请选择操作:" num
     case "$num" in
     1)
