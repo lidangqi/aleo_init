@@ -1,5 +1,6 @@
 #!/bin/bash
 
+LANGUAGE=$1
 # 字体颜色配置
 Yellow="\033[33m"
 Green="\033[32m"
