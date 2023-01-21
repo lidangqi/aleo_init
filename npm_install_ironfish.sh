@@ -102,7 +102,7 @@ run_wallet_transactions() {
     ironfish wallet:transactions
 }
 
-run_red_log() {
+run_read_log() {
     tail -f /root/ironfish_node.log
 }
 
