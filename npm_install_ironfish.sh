@@ -126,6 +126,7 @@ start_menu() {
     yellow " 2. 创建钱包"
     yellow " 3. 绑定涂鸦号"
     yellow " 4. 运行/重启节点"
+    red    " (功能5/6/7/8/9必须同步完节点后使用)"
     yellow " 5. 任务一:铸币"
     yellow " 6. 任务二:燃烧铸币"
     yellow " 7. 任务三:发送铸币"
