@@ -84,6 +84,18 @@ run_wallet_send() {
     ironfish wallet:send --to dfc2679369551e64e3950e06a88e68466e813c63b100283520045925adbe59ca
 }
 
+run_faucet() {
+    ironfish faucet
+}
+
+run_wallet_balances() {
+    ironfish wallet:balances
+}
+
+run_wallet_transactions() {
+    ironfish wallet:transactions
+}
+
 start_menu() {
     
     clear
@@ -92,7 +104,6 @@ start_menu() {
     do
     green " ========================================== "
     green " ironfish 一键安装管理脚本"
-    green "    Allen_Li   v1.0.0"
     green " ========================================== "
     echo
     red " ———————————————— 安装向导 ———————————————— "
@@ -103,6 +114,9 @@ start_menu() {
     yellow " 5. 任务一:铸币"
     yellow " 6. 任务二:燃烧铸币"
     yellow " 7. 任务三:发送铸币"
+    yellow " 8. 查看钱包余额"
+    yellow " 9. 查看交易记录"
+    yellow " 10. 水龙头"
     yellow " 0. 退出 管理脚本"
     green " ========================================== "
     read -rp "Please enter a number:" num
@@ -127,6 +141,15 @@ start_menu() {
         ;;
     7)
         run_wallet_send
+        ;;
+    8)
+        run_wallet_balances
+        ;;
+    9)
+        run_wallet_transactions
+        ;;
+    10)
+        run_faucet
         ;;
     0)
         exit 1
