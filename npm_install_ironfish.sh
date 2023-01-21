@@ -13,19 +13,19 @@ ERROR="[${Red}Error${Font}]"
 TIP="[${Green}Tip${Font}]"
 
 yellow() {
-    echo -e "${Yellow} $1 ${Font}"
+    echo  "${Yellow} $1 ${Font}"
 }
 
 green() {
-    echo -e "${Green} $1 ${Font}"
+    echo  "${Green} $1 ${Font}"
 }
 
 red() {
-    echo -e "${Red} $1 ${Font}"
+    echo  "${Red} $1 ${Font}"
 }
 
 blue() {
-    echo -e "${Blue} $1 ${Font}"
+    echo  "${Blue} $1 ${Font}"
 }
 
 check_root() {
