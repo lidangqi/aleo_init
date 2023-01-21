@@ -42,6 +42,7 @@ check_root() {
 install_docker_ironfish(){
     
     echo "---开始安装docker..."
+    sudo apt-get update -y
     sudo apt-get install -y docker.io 
     sudo systemctl daemon-reload
     sudo systemctl restart docker
