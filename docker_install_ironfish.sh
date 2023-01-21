@@ -1,6 +1,7 @@
 #!/bin/bash
 
 LANGUAGE=$1
+SHELL_VERSION="0.9.18"
 # 字体颜色配置
 Yellow="\033[33m"
 Green="\033[32m"
