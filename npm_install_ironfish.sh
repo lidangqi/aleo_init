@@ -57,9 +57,14 @@ install_ironfish_env() {
 }
 
 run_ironfish() {
-    tmux new-session -s ironfish -d
-    sleep 5
-    tmux send-keys -t ironfish 'ironfish start' C-m
+    PROC_NAME=ironfish
+    ProcNumber=\`ps -ef | grep -w \$PROC_NAME | grep -v grep | wc -l\`
+    if [ \$ProcNumber -le 0 ];then
+    echo "ironfish is not run"
+    nohup ironfish start >> /root/ironfish_node.log 2>&1 &   
+    else
+        echo "ironfish already running."
+    fi
 }
 
 run_wallet_create() {
@@ -97,6 +102,14 @@ run_wallet_transactions() {
     ironfish wallet:transactions
 }
 
+run_red_log() {
+    tail -f /root/ironfish_node.log
+}
+
+run_status() {
+    ironfish status
+}
+
 start_menu() {
     
     clear
@@ -105,7 +118,7 @@ start_menu() {
     do
     green " ========================================== "
     green " ironfish npm一键安装管理脚本"
-    green "     Allen_li   v1.0.0"
+    green "     Allen_Li   v1.0.0"
     green " ========================================== "
     echo
     red " ———————————————— 安装向导 ———————————————— "
@@ -119,6 +132,8 @@ start_menu() {
     yellow " 8. 查看钱包余额"
     yellow " 9. 查看交易记录"
     yellow " 10. 水龙头"
+    yellow " 11. 查看节点日志"
+    yellow " 12. 查看节点状态"
     yellow " 0. 退出 管理脚本"
     green " ========================================== "
     read -rp "Please enter a number:  " num
@@ -152,6 +167,12 @@ start_menu() {
         ;;
     10)
         run_faucet
+        ;;
+    11)
+        run_read_log
+        ;;
+    12)
+        run_status
         ;;
     0)
         exit 1
