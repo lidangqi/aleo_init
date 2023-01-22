@@ -127,6 +127,7 @@ start_menu() {
     yellow " 2. 创建钱包"
     red    " (功能3 输入用户涂鸦或测试网用户的url，如https://testnet.ironfish.network/users/1080)"
     yellow " 3. 绑定涂鸦号"
+    red    " (功能4 需先执行1/2 创建钱包,绑定涂鸦号后,运行)"
     yellow " 4. 运行/重启节点"
     red    " (功能5/6/7/8/9必须同步完节点后使用)"
     yellow " 5. 任务一:铸币"
