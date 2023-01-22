@@ -187,7 +187,7 @@ ironfish_faucet(){
 }
 
 ironfish_logs(){
-    docker logs node -f
+    docker logs node
 }
 
 #8 功能补充区
