@@ -103,7 +103,7 @@ run_wallet_transactions() {
 }
 
 run_read_log() {
-    tail -f /root/ironfish_node.log
+    tail -n 10 /root/ironfish_node.log
 }
 
 run_status() {
