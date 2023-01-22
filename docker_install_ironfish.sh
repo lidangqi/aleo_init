@@ -1,7 +1,5 @@
 #!/bin/bash
 
-LANGUAGE=$1
-SHELL_VERSION="0.9.18"
 # 字体颜色配置
 Yellow="\033[33m"
 Green="\033[32m"
@@ -188,8 +186,12 @@ ironfish_faucet(){
     sudo docker exec -it node bash -c "ironfish faucet"
 }
 
+ironfish_logs(){
+    docker logs node -f
+}
+
 #8 功能补充区
-start_menu() {
+main(){
     
     clear
 
@@ -199,18 +201,17 @@ start_menu() {
     green "           ironfish 一键安装管理脚本"
     green "    原作者署名: yangyangcoin 修改: Allen_Li"
     green " ==========================================="
-    echo
-    yellow " 1. 安装 docker 和 Ironfish"
-    yellow " 2. 检查 node状态"
-    yellow " 3. 开始 miner挖矿"
-    yellow " 4. 查看 Wallet信息"
-    yellow " 5. 操作 Asset 铸造，燃烧，发送"
-    yellow " 6. 进入 Ironfish控制台"
-    yellow " 7. 重启节点"
-    yellow " 8. 版本更新"
-    yellow " 9. 水龙头"
-    yellow " 0. 退出"
-    echo
+    yellow "1. 安装 docker 和 Ironfish"
+    yellow "2. 检查 node状态"
+    yellow "3. 开始 miner挖矿"
+    yellow "4. 查看 Wallet信息"
+    yellow "5. 操作 Asset 铸造，燃烧，发送"
+    yellow "6. 进入 Ironfish控制台"
+    yellow "7. 重启节点"
+    yellow "8. 版本更新"
+    yellow "9. 水龙头"
+    yellow "10. 查看node日志"
+    yellow "0. 退出"
     read -r -p " 请选择操作:" num
     case "$num" in
     1)
@@ -240,6 +241,9 @@ start_menu() {
     9)
         ironfish_faucet
         ;;
+    10)
+        ironfish_logs
+        ;;
     0)
         echo "---退出程序！"
         exit
@@ -252,5 +256,5 @@ start_menu() {
 
     done
 }
-check_ubuntu
-start_menu
+
+main
