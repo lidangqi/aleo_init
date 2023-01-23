@@ -76,8 +76,8 @@ run_testnet() {
 }
 
 run_wallet_mint() {
-    #mycoin=$(ironfish wallet:address | awk '{print $2}' | sed -e 's/,//g')
-    ironfish wallet:mint
+    mycoin=$(ironfish wallet:address | awk '{print $2}' | sed -e 's/,//g')
+    ironfish wallet:mint --metadata="see more here" --name=$mycoin --amount=10000
 
 run_wallet_burn() {
     #assetId=$(ironfish wallet:balances | sed -n "4,1p" | awk '{print $2}')
