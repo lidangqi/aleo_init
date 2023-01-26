@@ -71,6 +71,10 @@ install_docker_ironfish(){
     sudo docker exec -it node bash -c "ironfish config:set blockGraffiti ${name}"
     sleep 2
     sudo docker exec -it node bash -c "ironfish config:set enableTelemetry true"
+    sleep 2
+    sudo docker exec -it node bash -c "ironfish wallet:create ${name}"
+    sleep 2
+    sudo docker exec -it node bash -c "ironfish wallet:use ${name}"
     echo "安装完成！"
 }
 
