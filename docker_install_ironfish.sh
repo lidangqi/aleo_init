@@ -65,7 +65,7 @@ install_docker_ironfish(){
     echo "---开始拉取ironfish镜像..."
     sudo docker pull ghcr.io/iron-fish/ironfish:latest
     echo "---启动ironfish，docker名为 node"
-    sudo docker run -itd --name node --net host --volume /root/.node:/root/.ironfish ghcr.io/iron-fish/ironfish:latest start  
+    sudo docker run -itd --name node --net host --volume /root/.node:/root/.ironfish ghcr.io/iron-fish/ironfish:latest start
     sleep 10
     echo "---开始配置节点..."
     sudo docker exec -it node bash -c "ironfish config:set blockGraffiti ${name}"
@@ -162,7 +162,7 @@ ironfish_restart(){
 #8
 ironfish_update(){
     
-    read -r -p "---更新可能丢失钱包数据，是否继续 [Y/n] " input
+    read -r -p "---更新可能丢失钱包数据(请先导出钱包)，是否继续 [Y/n] " input
     case $input in
         [yY][eE][sS]|[yY])
             echo "---开始更新..."
@@ -170,11 +170,10 @@ ironfish_update(){
             echo "---删除旧版节点..."
             sudo docker stop node
             sudo docker rm node
-            sudo rm -rf /root/.node
             echo "--旧版本docker节点已删除！"
             sleep 5
             echo "--启动新版本docker节点..."
-            sudo docker run -itd --name node --net host --volume /root/.node:/root/.ironfish ghcr.io/iron-fish/ironfish:latest start
+            sudo docker run -itd --name node --net host --volume /root/.node:/root/.ironfish ghcr.io/iron-fish/ironfish:latest start --upgrade
             echo "---启动成功，升级完成！"
             ;;
         *)
