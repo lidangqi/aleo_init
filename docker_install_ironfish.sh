@@ -68,13 +68,13 @@ install_docker_ironfish(){
     sudo docker run -itd --name node --net host --volume /root/.node:/root/.ironfish ghcr.io/iron-fish/ironfish:latest start
     sleep 10
     echo "---开始配置节点..."
-    sudo docker exec -it node bash -c "ironfish config:set blockGraffiti ${name}"
+    sudo docker exec -it node bash -c "ironfish config:set blockGraffiti $name"
     sleep 2
     sudo docker exec -it node bash -c "ironfish config:set enableTelemetry true"
     sleep 2
-    sudo docker exec -it node bash -c "ironfish wallet:create ${name}"
+    sudo docker exec -it node bash -c "ironfish wallet:create $name"
     sleep 2
-    sudo docker exec -it node bash -c "ironfish wallet:use ${name}"
+    sudo docker exec -it node bash -c "ironfish wallet:use $name"
     echo "安装完成！"
 }
 
@@ -127,17 +127,30 @@ ironfish_asset(){
     read -r -p " ---请选择操作:" num
     case "$num" in
     1)
-        sudo docker exec -it node bash -c "ironfish wallet:mint"
+        mycoin=$(sudo docker exec -it node bash -c "ironfish wallet:balance |awk 'NR==1{print \$2}'")
+        echo "您的涂鸦号: $mycoin"
+        sudo docker exec -it node bash -c "ironfish wallet:mint --metadata $mycoin --name $mycoin --amount 10000 --fee 0.00000001 --confirm"
         ;;
-    2)
-        sudo docker exec -it node bash -c "ironfish wallet:burn"
+    2)  
+        mycoin=$(sudo docker exec -it node bash -c "ironfish wallet:balance |awk 'NR==1{print \$2}'")
+        sleep 2
+        echo "您的涂鸦号: $mycoin"
+        mycoin=$(echo $mycoin | tr -d '\r')
+        assetId=$(sudo docker exec -it node bash -c "ironfish wallet:balances |grep $mycoin|awk 'NR==2 {print \$2}'")
+        echo "您的涂鸦号assetId: $assetId"
+        sudo docker exec -it node bash -c "ironfish wallet:burn --assetId $assetId --amount 100 --fee 0.00000001 --confirm"
         ;;
     3)  
+        mycoin=$(sudo docker exec -it node bash -c "ironfish wallet:balance |awk 'NR==1{print \$2}'")
+        sleep 2
+        echo "您的涂鸦号: $mycoin"
+        mycoin=$(echo $mycoin | tr -d '\r')
+        assetId=$(sudo docker exec -it node bash -c "ironfish wallet:balances |grep $mycoin |awk 'NR==2 {print \$2}'")
         read -p "请输入public address(Enter:官方地址):  " public_address
         if [ -z "$public_address" ]; then
             public_address=dfc2679369551e64e3950e06a88e68466e813c63b100283520045925adbe59ca
         fi
-        sudo docker exec -it node bash -c "ironfish wallet:send --to $public_address"
+        sudo docker exec -it node bash -c "ironfish wallet:send --to $public_address --assetId $assetId --amount 100 --fee 0.00000001 --confirm"
         ;; 
     0)
         break
@@ -162,7 +175,7 @@ ironfish_restart(){
 #8
 ironfish_update(){
     
-    read -r -p "---更新可能丢失钱包数据(请先导出钱包)，是否继续 [Y/n] " input
+    read -r -p "---更新可能丢失钱包数据，是否继续 [Y/n] " input
     case $input in
         [yY][eE][sS]|[yY])
             echo "---开始更新..."
@@ -202,7 +215,7 @@ main(){
     do
     green "============================================"
     green "           ironfish 一键安装管理脚本"
-    green "    原作者署名: yangyangcoin 修改: Allen_Li"
+    green "                 Allen_Li  2023-01-29"
     green " ==========================================="
     yellow "1. 安装 docker 和 Ironfish"
     yellow "2. 检查 node状态"
