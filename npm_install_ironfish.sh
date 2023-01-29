@@ -88,12 +88,14 @@ run_wallet_mint() {
 }
 
 run_wallet_burn() {
-    assetId=$(ironfish wallet:balances |grep allen_li1 |awk 'NR==2 {print $2}')
+    mycoin=$(ironfish wallet:address | awk '{print $2}' | sed -e 's/,//g')
+    assetId=$(ironfish wallet:balances |grep $mycoin |awk 'NR==2 {print $2}')
     ironfish wallet:burn --assetId=$assetId --amount=100 --fee=0.00000001 --confirm
 }
 
 run_wallet_send() {
-    assetId=$(ironfish wallet:balances |grep allen_li1 |awk 'NR==2 {print $2}')
+    mycoin=$(ironfish wallet:address | awk '{print $2}' | sed -e 's/,//g')
+    assetId=$(ironfish wallet:balances |grep $mycoin |awk 'NR==2 {print $2}')
     ironfish wallet:send --to dfc2679369551e64e3950e06a88e68466e813c63b100283520045925adbe59ca --assetId=$assetId --amount=100 --fee=0.00000001 --confirm
 }
 
