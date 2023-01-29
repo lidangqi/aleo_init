@@ -146,6 +146,8 @@ ironfish_asset(){
         echo "您的涂鸦号: $mycoin"
         mycoin=$(echo $mycoin | tr -d '\r')
         assetId=$(sudo docker exec -it node bash -c "ironfish wallet:balances |grep $mycoin |awk 'NR==2 {print \$2}'")
+        assetId=$(echo $assetId | tr -d '\r')
+        echo "您的涂鸦号assetId: $assetId"
         read -p "请输入public address(Enter:官方地址):  " public_address
         if [ -z "$public_address" ]; then
             public_address=dfc2679369551e64e3950e06a88e68466e813c63b100283520045925adbe59ca
