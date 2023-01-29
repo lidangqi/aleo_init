@@ -75,7 +75,7 @@ run_ironfish() {
 }
 
 run_wallet_create() {
-    ironfish wallet:create
+    ironfish wallet:create 
 }
 
 run_testnet() {
@@ -84,16 +84,17 @@ run_testnet() {
 
 run_wallet_mint() {
     mycoin=$(ironfish wallet:address | awk '{print $2}' | sed -e 's/,//g')
-    ironfish wallet:mint --metadata="see more here" --name=$mycoin --amount=10000
+    ironfish wallet:mint --metadata="see more here" --name=$mycoin --amount=10000 --fee=0.00000001 --confirm
 }
 
 run_wallet_burn() {
-    assetId=$(ironfish wallet:balances | sed -n "4,1p" | awk '{print $2}')
-    ironfish wallet:burn --assetId=$assetId --amount=1000
+    assetId=$(ironfish wallet:balances |grep allen_li1 |awk 'NR==2 {print $2}')
+    ironfish wallet:burn --assetId=$assetId --amount=100 --fee=0.00000001 --confirm
 }
 
 run_wallet_send() {
-    ironfish wallet:send --to dfc2679369551e64e3950e06a88e68466e813c63b100283520045925adbe59ca
+    assetId=$(ironfish wallet:balances |grep allen_li1 |awk 'NR==2 {print $2}')
+    ironfish wallet:send --to dfc2679369551e64e3950e06a88e68466e813c63b100283520045925adbe59ca --assetId=$assetId --amount=100 --fee=0.00000001 --confirm
 }
 
 run_faucet() {
@@ -151,7 +152,8 @@ start_menu() {
     do
     green " ========================================== "
     green " ironfish npm一键安装管理脚本"
-    green "     Allen_Li   v1.0.0"
+    green "     Allen_Li   v1.0.2 2023-01-29"
+    green "     铸币-燃烧-发送直接执行,无需输入"
     green " ========================================== "
     echo
     red " ———————————————— 安装向导 ———————————————— "
